@@ -1,0 +1,10 @@
+language: generic
+sudo: required
+services:
+    - docker
+
+before_install:
+    - docker build -t aqrulesms/docker-react -f Dockerfile.dev .
+
+script:
+    - docker run -e CI=true aqrulesms/docker-react npm run test
